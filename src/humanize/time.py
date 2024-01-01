@@ -236,9 +236,8 @@ def naturaltime(
         future = date > now
 
     ago = _("%s from now") if future else _("%s ago")
-    delta = naturaldelta(delta, months, minimum_unit)
 
-    if delta == _("a moment"):
+    if (delta := naturaldelta(delta, months, minimum_unit)) == _("a moment"):
         return _("now")
 
     return ago % delta
